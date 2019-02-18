@@ -15,6 +15,9 @@ class CreateSparePartInShopsTable extends Migration
     {
         Schema::create('spare_part_in_shops', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('spare_part_id');
+            $table->integer('price');
             $table->timestamps();
         });
     }
