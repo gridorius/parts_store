@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('profile', 'UserController@profile');
+
 // Models 
 Route::model('spare_part_in_shop', 'App\SparePartInShop');
 Route::model('user_order', 'App\UserOrder');
@@ -26,7 +28,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // SparePart
 Route::get('spare-part', 'SparePartController@showSparePartForm');
-Route::post('spare-part', 'SparePartController@create')
+Route::post('spare-part', 'SparePartController@create')->name('spare-part');
 
 // SparePartInShop
 Route::get('profile/spare-part', 'SparePartInShopController@showSparePartInShopForm');
