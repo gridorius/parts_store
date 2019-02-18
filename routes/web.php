@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('profile', 'UserController@profile');
+Route::get('profile', 'UserController@profile')->name('profile');
 
 // Models 
 Route::model('spare_part_in_shop', 'App\SparePartInShop');
