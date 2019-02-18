@@ -15,6 +15,10 @@ class CreateUserOrdersTable extends Migration
     {
         Schema::create('user_orders', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('spare_part_id');
+            $table->integer('min_price');
+            $table->integer('max_price');
             $table->timestamps();
         });
     }
