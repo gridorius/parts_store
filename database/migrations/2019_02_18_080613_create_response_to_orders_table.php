@@ -15,6 +15,8 @@ class CreateResponseToOrdersTable extends Migration
     {
         Schema::create('response_to_orders', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_order_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
