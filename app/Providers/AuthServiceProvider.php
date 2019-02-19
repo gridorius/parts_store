@@ -25,6 +25,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('create-spare-part-in-shop', function($user){
+            return $user->isShop;
+        });
+
+        Gate::define('modify-spare-part-in-shop', function($user, $sparePartInShop){
+            return $user->id == $sparePartInShop->user_id;
+        });
     }
 }

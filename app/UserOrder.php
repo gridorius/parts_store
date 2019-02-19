@@ -13,4 +13,6 @@ class UserOrder extends Model
     public function spare_part(){
         return $this->belongsTo('App\SparePart');
     }
+
+    protected $fillable = ['user_id', 'spare_part_id', 'min_price', 'max_price'];
 }

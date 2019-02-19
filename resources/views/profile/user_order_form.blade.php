@@ -9,10 +9,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Добавить запчасть в магазин') }}</div>
+                <div class="card-header">{{ __('Создать запрос') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('spare-part-in-shop') }}">
+                    <form method="POST" action="{{ route('user-order') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -40,14 +40,28 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Укажите цену') }}</label>
+                            <label for="min_price" class="col-md-4 col-form-label text-md-right">{{ __('Цена от') }}</label>
 
                             <div class="col-md-6">                      
-                                <input id="price" type="text" name='price'>
+                                <input id="min_price" type="text" name='min_price'>
 
-                                @if ($errors->has('price'))
+                                @if ($errors->has('min_price'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('price') }}</strong>
+                                        <strong>{{ $errors->first('min_price') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="max_price" class="col-md-4 col-form-label text-md-right">{{ __('Цена до') }}</label>
+
+                            <div class="col-md-6">                      
+                                <input id="max_price" type="text" name='max_price'>
+
+                                @if ($errors->has('max_price'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('max_price') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -58,11 +72,10 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6 offset-md-2">
+                            <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Добавить запчасть') }}
+                                    {{ __('Создать запрос') }}
                                 </button>
-                                <a href="{{route('spare-part-form')}}">Создать новую запчасть</a>
                             </div>
                         </div>
                     </form>
