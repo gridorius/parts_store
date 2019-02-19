@@ -24,4 +24,9 @@ class SparePartController extends Controller
 
         return redirect()->route('profile');
     }
+
+    public function find($text){
+        $found = SparePart::where('name', 'like', "%$text%")->get();
+        return response($found);
+    }
 }

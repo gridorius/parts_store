@@ -10,7 +10,9 @@ class SparePartInShop extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function spare_part(){
+    public function sparePart(){
         return $this->belongsTo('App\SparePart');
     }
+
+    protected $fillable = ['user_id', 'spare_part_id', 'price'];
 }

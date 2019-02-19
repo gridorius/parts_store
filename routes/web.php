@@ -27,14 +27,15 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // SparePart
-Route::get('spare-part', 'SparePartController@showSparePartForm');
+Route::get('spare-part/find/{text}', 'SparePartController@find');
+Route::get('spare-part', 'SparePartController@showSparePartForm')->name('spare-part-form');
 Route::post('spare-part', 'SparePartController@create')->name('spare-part');
 
 // SparePartInShop
-Route::get('profile/spare-part', 'SparePartInShopController@showSparePartInShopForm');
-Route::post('profile/spare-part', 'SparePartInShopController@create');
+Route::get('profile/spare-part', 'SparePartInShopController@showSparePartInShopForm')->name('spare-part-in-shop-form');
+Route::post('profile/spare-part', 'SparePartInShopController@create')->name('spare-part-in-shop');
 Route::get('profile/spare-parts', 'SparePartInShopController@show');
-Route::delete('profile/spare-part/{spare_part_in_shop}', 'SparePartInShopController@delete');
+Route::delete('profile/spare-part/{spare_part_in_shop}', 'SparePartInShopController@delete')->name('spare-part-in-shop-delete');
 
 // UserOrder
 Route::get('profile/user-order', 'UserOrderController@showUserOrderForm');
