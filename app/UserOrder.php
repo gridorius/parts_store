@@ -10,7 +10,7 @@ class UserOrder extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function spare_part(){
+    public function sparePart(){
         return $this->belongsTo('App\SparePart');
     }
 

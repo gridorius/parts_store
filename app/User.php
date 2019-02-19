@@ -31,4 +31,8 @@ class User extends Authenticatable
     public function sparePartsInShop(){
         return $this->hasMany('App\SparePartInShop');
     }
+
+    public function orders(){
+        return $this->hasMany('App\UserOrder');
+    }
 }

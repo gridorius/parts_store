@@ -28,4 +28,10 @@ class UserOrderController extends Controller
 
         return redirect()->route('profile');
     }
+
+    public function delete(UserOrder $order){
+        $order->delete();
+
+        return redirect()->route('profile');
+    }
 }
