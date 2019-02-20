@@ -39,10 +39,11 @@ Route::delete('profile/spare-part/{spare_part_in_shop}', 'SparePartInShopControl
 
 // UserOrder
 Route::get('profile/user-order', 'UserOrderController@showUserOrderForm')->name('user-order-form');
+Route::get('profile/user-order/{user_order}', 'UserOrderController@get')->name('user-order-show');
 Route::post('profile/user-order', 'UserOrderController@create')->name('user-order');
 Route::get('profile/user-orders', 'UserOrderController@show');
 Route::delete('profile/user-order/{user_order}', 'UserOrderController@delete')->name('user-order-delete');
 
 // ResponseToUserOrder
-Route::post('profile/response-to-order', 'ResponseToUserOrderController@create');
-Route::delete('profile/response-to-order/{response_to_user_order}', 'ResponseToUserOrderController@delete');
+Route::post('profile/response-to-order', 'ResponseToOrderController@create')->name('response-to-order');
+Route::delete('profile/response-to-order/{response_to_user_order}', 'ResponseToOrderController@delete')->name('response-to-order-delete');

@@ -14,7 +14,7 @@ class SparePartInShopController extends Controller
     }
 
     public function create(Request $request){
-        if(Gate::denies('create-spare-part-in-shop'))
+        if(Gate::denies('isShop'))
             return back();
 
         $this->validate($request, [
@@ -32,9 +32,9 @@ class SparePartInShopController extends Controller
     }
 
     public function delete(SparePartInShop $sparePartInShop){
-        if(Gate::denies('modify-spare-part-in-shop'))
+        if(Gate::denies('isShop') || Gate::denies('isOwner', $sparePartInShop))
             return back();
-
+            
         $sparePartInShop->delete();
 
         return redirect()->route('profile');

@@ -14,5 +14,9 @@ class UserOrder extends Model
         return $this->belongsTo('App\SparePart');
     }
 
+    public function responses(){
+        return $this->hasMany('App\ResponseToOrder');
+    }
+
     protected $fillable = ['user_id', 'spare_part_id', 'min_price', 'max_price'];
 }

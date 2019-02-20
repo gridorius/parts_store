@@ -9,7 +9,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Создать запрос') }}</div>
+                <div class="card-header">{{ __('Создать заказ') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('user-order') }}">
@@ -74,7 +74,7 @@
                         <div class="row">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Создать запрос') }}
+                                    {{ __('Создать заказ') }}
                                 </button>
                             </div>
                         </div>
