@@ -6,6 +6,7 @@ use Gate;
 use Auth;
 use App\UserOrder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class UserOrderController extends Controller
 {
@@ -26,12 +27,26 @@ class UserOrderController extends Controller
             'max_price' => 'required|integer|min:'.$request->min_price
         ]);
 
-        UserOrder::create([
+        $order = UserOrder::create([
             'user_id' => Auth::id(),
             'spare_part_id' => $request->spare_part_id,
             'min_price' => $request->min_price,
             'max_price' => $request->max_price
         ]);
+
+        $mails = UserOrder::select('users.email')
+        ->distinct()
+        ->join('spare_part_in_shops as t2', 'user_orders.spare_part_id', 't2.spare_part_id')
+        ->join('users', 'users.id', 't2.user_id')
+        ->whereRaw('t2.price >= user_orders.min_price')
+        ->whereRaw('t2.price <= user_orders.max_price')
+        ->get();
+
+        foreach($mails as $email)
+            Mail::send('emails.message', ['order' => $order], function ($message) use ($email){
+                $message->from('user@example.com', 'Laravel');
+                $message->to($email->email);
+            });
 
         return redirect()->route('profile');
     }
